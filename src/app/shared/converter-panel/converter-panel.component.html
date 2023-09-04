@@ -1,0 +1,86 @@
+<div class="container-fluid mt-2">
+    <!-- CONVERT FORM -->
+    <mat-card class="px-3 pt-4">
+        <form
+        [formGroup]="converterForm"
+        (ngSubmit)="convert()"
+        (keyup.enter)="$event.preventDefault()"
+        novalidate>
+        <div class="row">
+            <div class="margin-sm-left-right col-12 col-md-12 col-lg-4 col-xl-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <input
+                        matInput
+                        placeholder="Amount"
+                        formControlName="amountControl"
+                        min="0"
+                        type="number">
+                </mat-form-field>
+            </div>
+            <div class="margin-sm-left-right col-12 col-md-12 col-lg-3 col-xl-3">
+                <mat-form-field appearance="outline" class="w-100" [ngClass]="disableFromInput? 'pointer-events':''">
+                    <mat-label>From</mat-label>
+                    <mat-select [disabled]="disableFromInput" placeholder="From" formControlName="from" [(ngModel)]="fromPreSelected">
+                      <mat-option *ngFor="let rates of ratesList" [value]="rates.value">
+                        {{rates.key}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="margin-sm-left-right col-12 col-md-12 col-lg-2 col-xl-2 mt-2 mb-3">
+                <button mat-raised-button type="button" color="primary" role="button"
+                       (click)="changeExchangeInputValues()"
+                    class="margin-sm-left-right opposite-arrows w-100">
+                    <mat-icon>sync_alt</mat-icon>
+                </button>
+            </div>
+            <div class="margin-sm-left-right col-12 col-md-12 col-lg-3 col-xl-3">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>To</mat-label>
+                    <mat-select placeholder="To" formControlName="to" [(ngModel)]="toPreSelected">
+                      <mat-option *ngFor="let rates of ratesList" [value]="rates.value">
+                        {{rates.key}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+        <div class="row justify-content-md-end">
+            <div class="margin-sm-left-right col-12 col-md-12 col-lg-8 col-xl-8 my-2">
+                <button
+                mat-raised-button
+                class="margin-sm-left convert-button w-100 py-4"
+                color="primary"
+                type="submit"
+                [disabled]="isSubmitDisabled()"
+            >Convert
+            </button>
+            </div>
+        </div>
+        <div class="row justify-content-md-end">
+            <div class="margin-sm-left-right col-12 col-md-12 col-lg-4 col-xl-4 mt-3">
+                <mat-form-field appearance="outline" class="w-100" *ngIf="conversionInfoResult">
+                    <input matInput readonly [value]="conversionInfoResult" class="text-center fw-bold">
+                  </mat-form-field>
+            </div>
+            <div class="margin-sm-left-right col-12 col-md-12 mt-3" [ngClass]="showDetailsBtn? 'col-lg-4 col-xl-4':'col-lg-8 col-xl-8'">
+                <mat-form-field appearance="outline" class="w-100" *ngIf="result">
+                    <input matInput readonly [value]="result" class="text-center fw-bold">
+                  </mat-form-field>
+            </div>
+            <div class="margin-sm-left-right col-12 col-md-12 col-lg-4 col-xl-4 my-3" *ngIf="result&& showDetailsBtn">
+                <button mat-raised-button
+                class="margin-sm-left w-100"
+                color="primary"
+                type="button"
+                (click)="navigateToDetails()"
+            >More Details
+            </button>
+            </div>
+        </div>
+
+    </form>
+    </mat-card>
+  
+</div>
+

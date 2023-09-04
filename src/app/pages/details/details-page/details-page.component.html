@@ -1,0 +1,19 @@
+
+<article class="d-flex justify-content-between mx-2 mt-4">
+    <!-- Title -->
+    <h1 class="page-title title--font-size font--roboto-bold" >{{currencyFromName}} - {{currencyFromName| currencyName}}</h1>
+    <!-- Back Button -->
+    <button mat-raised-button color="primary" type="button"
+            (click)="backToHome()"
+        >Back To Home
+    </button>
+</article>
+
+<!-- Converter sticky panel  -->
+<app-converter-panel 
+    [disableFromInput]="true"
+    [showDetailsBtn]="false">
+</app-converter-panel>
+
+<!-- Historical Rates Chart -->
+<app-historical-rates-chart></app-historical-rates-chart>

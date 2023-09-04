@@ -1,0 +1,13 @@
+<div class="container-fluid mt-4">
+    <mat-card class="p-4">
+        <h3>Most Popular: </h3>
+        <div class="row g-3">
+            <mat-card class="col-12 col-md-12 col-lg-4 col-xl-4 p-4"
+                      *ngFor="let currency of result">
+                <p class="card-text">
+                        {{ currency.amountControl | number: '1.2-2' }} {{currency.selectedFromOptionName.key}} = {{ ((currency.amountControl * currency.to) / currency.from) | number: '1.2-2' }} {{currency.selectedToOptionName.key}}
+                </p>
+            </mat-card>
+          </div>
+    </mat-card>
+</div>
