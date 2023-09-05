@@ -22,6 +22,6 @@ export class DetailsPageComponent {
     this.router.navigate(['home'])
   }
   ngOnDestroy(){
-    localStorage.clear()
+    localStorage.removeItem('currencyData')
   }
 }

@@ -4,3 +4,7 @@
 .pointer-events{
     pointer-events: none !important;
 }
+::ng-deep mat-card{
+    border-top: 3px solid #498dcc !important;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 11, 0.1) !important;
+}

@@ -114,13 +114,13 @@ export class ConverterPanelComponent {
 
     covertVal.selectedFromOptionName = selectedFromOptionName
     covertVal.selectedToOptionName = selectedToOptionName
+
+    
     this.convertedCurrencies.unshift(covertVal);
     if(this.convertedCurrencies?.length<10){
      localStorage.setItem('convertedCurrencies', JSON.stringify(this.convertedCurrencies));
     }else{
      this.convertedCurrencies.shift();
-     console.log("helllo",this.convertedCurrencies )
-    // 
      localStorage.setItem('convertedCurrencies', JSON.stringify(this.convertedCurrencies));
     }
 
